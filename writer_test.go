@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
+	"github.com/zaikir/logrus"
 )
 
 func ExampleLogger_Writer_httpServer() {

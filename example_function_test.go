@@ -3,8 +3,8 @@ package logrus_test
 import (
 	"testing"
 
-	log "github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
+	log "github.com/zaikir/logrus"
 )
 
 func TestLogger_LogFn(t *testing.T) {
