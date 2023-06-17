@@ -3,8 +3,43 @@ package logrus
 import (
 	"fmt"
 	"log"
+	"os"
 	"strings"
 )
+
+func init() {
+	logLevel, exists := os.LookupEnv("LOG_LEVEL")
+	if !exists {
+		logLevel = "info"
+	}
+
+	switch logLevel {
+	case "trace":
+		SetLevel(TraceLevel)
+	case "debug":
+		SetLevel(DebugLevel)
+	case "info":
+		SetLevel(InfoLevel)
+	case "warning":
+		SetLevel(WarnLevel)
+	case "error":
+		SetLevel(ErrorLevel)
+	case "fatal":
+		SetLevel(FatalLevel)
+	case "panic":
+		SetLevel(PanicLevel)
+	}
+
+	logFormat, exists := os.LookupEnv("LOG_FORMAT")
+	if !exists {
+		logFormat = "text"
+	}
+
+	switch logFormat {
+	case "json":
+		SetFormatter(&JSONFormatter{})
+	}
+}
 
 // Fields type, used to pass to `WithFields`.
 type Fields map[string]interface{}
